@@ -9,10 +9,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import {useEffect} from 'react';
+import {useState} from 'react';
 
 
 
 function App() {
+
+
+  let [responseData, setResponseData] = useState('')
 
   useEffect(() => {
     document.title = "GDSC Assignment"
@@ -29,17 +33,20 @@ function App() {
     
   };
 
-  axios
+  const fetchData = (e) => {axios
     .get("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/WavvLdfdP6g8aZTtbBQHTw", config)
     .then((response) => {
       console.log(response); //These are the results sent back from the API!
+      setResponseData(response.data)
     })
     .catch(err => {
         console.log(err);
     });
+  }
 
 
   return (
+    <main>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="#home">Restaurant-data</Navbar.Brand>
@@ -61,10 +68,14 @@ function App() {
             </NavDropdown>
           </Nav>
 
-          <Button variant="light">Fetch Data</Button> 
+          <Button variant="light" onClick={(e) => fetchData(e)}>Fetch Data</Button> 
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
+    {JSON.stringify(responseData)}
+      </main>
+    
     
   );
 }
