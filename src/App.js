@@ -8,6 +8,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
+import Image from "react-bootstrap/Image";
+
 import {useEffect} from 'react';
 import {useState} from 'react';
 
@@ -49,6 +51,12 @@ function App() {
     <main>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
+      <Image
+        src="../gdsc.png"
+        
+        style={{height:'auto',width:'15%'}}
+      />
+        
         <Navbar.Brand href="#home">Restaurant-data</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
